@@ -4,6 +4,7 @@ from numpy.testing import assert_equal, assert_almost_equal
 
 from chana.analysis.climo import (get_sum, get_count)
                                      
+#by default, this is in data/test/
 test_data_dir = os.environ.get('TEST_DATA_DIR')    
 
 
@@ -17,7 +18,10 @@ def test_get_sum():
     #do not break the analysis
     #The point is to get through the asserts without any issues
     
-    true_sum = #whatever you find in the manual analysis
+    data_dir = test_data_dir
+    
+    #whatever you find in the manual analysis
+    true_sum = np.load(test_data_dir + "file_name.npy")
     
     sum = #call to get_sum
     
