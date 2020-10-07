@@ -1,7 +1,7 @@
 # cheyenne_analysis
 Functions and examples of generating critical climatological products
 
-[![Build Status](https://travis-ci.com/ahaberlie/chana.svg?branch=master)](https://travis-ci.com/ahaberlie/chana)
+[![Build Status](https://travis-ci.com/ahaberlie/chana.svg?branch=main)](https://travis-ci.com/ahaberlie/chana)
 [![Code Coverage Status](https://codecov.io/github/ahaberlie/chana/coverage.svg?branch=master)](https://codecov.io/github/ahaberlie/chana?branch=master)
 
 <h3>Dependencies</h3>
