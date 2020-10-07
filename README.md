@@ -2,7 +2,7 @@
 Functions and examples of generating critical climatological products
 
 [![Build Status](https://travis-ci.com/ahaberlie/chana.svg?branch=main)](https://travis-ci.com/ahaberlie/chana)
-[![Code Coverage Status](https://codecov.io/github/ahaberlie/chana/coverage.svg?branch=master)](https://codecov.io/github/ahaberlie/chana?branch=master)
+[![Code Coverage Status](https://codecov.io/github/ahaberlie/chana/coverage.svg?branch=main)](https://codecov.io/github/ahaberlie/chana?branch=main)
 
 <h3>Dependencies</h3>
 <p>These Python packages are required to run the base code in this repository.</p>
