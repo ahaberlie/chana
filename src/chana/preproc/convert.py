@@ -53,7 +53,7 @@ def get_index(start_year, parent_dir):
     
     for month in range(1, 13):
     
-        files = natsorted(glob.glob("{}/{:02d}/*AFWA*".format(parent_dir, month)))
+        files = natsorted(glob.glob("{}/{:02d}/AFWA*".format(parent_dir, month)))
 
         for file in files:
             
