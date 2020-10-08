@@ -1,7 +1,6 @@
 #imports
 import numpy as np
 import pandas as pd
-import pickle
 from datetime import datetime
 
 def get_sum(geo_df, groupby=None):
@@ -54,6 +53,8 @@ def get_sum(geo_df, groupby=None):
             column = sli[sum_type]
 
             result.append([column, slice_sum])
+            
+        result = np.array(result)
     
     return result
         
