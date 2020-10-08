@@ -16,7 +16,6 @@
 *.jpeg
 !*README.txt
 *.db
-*.nc
 *.hdf
 *.bin
 *.h5
@@ -26,12 +25,12 @@
 *.tar
 *.lock
 *.tar.gz
-*.nc
 *.shp
 *.cpg
 *.dbf
 *.shx
 *.pdf
+*.nc
 *.h5
 *.mp4
 *.ini
@@ -43,6 +42,7 @@
 
 dist/*
 build/*
+!data/test/convert/*
 *.egg-info
 MANIFEST
 .eggs/
