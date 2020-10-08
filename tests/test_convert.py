@@ -132,8 +132,8 @@ def test_convert_file():
 
     assert_equal(expected_variables, data_vars)
 
-    dummy1 = out_nc['dummy1'].values()
-    dummy5 = out_nc['dummy5'].values()
+    dummy1 = out_nc['dummy1'].values
+    dummy5 = out_nc['dummy5'].values
 
     assert_almost_equal(expected_dummy1, dummy1)
     assert_almost_equal(expected_dummy5, dummy5)
