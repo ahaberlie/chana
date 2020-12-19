@@ -6,9 +6,14 @@ import os
 
 if __name__ == "__main__":
 
-    out_folder = "/data/haberlie/cheyenne_radar/2004-2005"
-    folder = "/data/haberlie/cheyenne/2004-2005"
-    index = get_index(2004, folder)
+    syr = 1990
+    eyr = syr + 1
+    vars = ['AFWA_CAPE', 'AFWA_CAPE_MU',  'AFWA_CIN', 'AFWA_CIN_MU']
+    outfolder = 'capecin'
+
+    out_folder = "/glade/scratch/ahaberli/{}/{}-{}".format(outfolder, syr, eyr)    
+    folder = "/glade/scratch/ahaberli/{}-{}".format(syr, eyr)
+    index = get_index(syr, folder)
 
     index['time'] = pd.to_datetime(index.time)
     counts = index.groupby(index.time.dt.month).count()
@@ -18,7 +23,7 @@ if __name__ == "__main__":
     print(counts)
 
     index = index[~pd.isnull(index.filename)].copy()
-
+    
     for mid, month in index.groupby(index.time.dt.month):
 
         outdir = "{}/{:02d}".format(out_folder, mid)
@@ -32,7 +37,7 @@ if __name__ == "__main__":
 
             if not os.path.exists(outfile):
 
-                conv = convert_file(row.filename, ['REFD', 'REFD_COM', 'REFD_MAX'])
+                conv = convert_file(row.filename, vars)
 
                 conv.to_netcdf(outfile)
                 print(outfile, "written!")
