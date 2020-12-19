@@ -21,9 +21,9 @@ def get_chey_date(fname):
     """    
 
     return datetime.datetime.strptime(fname[-19:], '%Y-%m-%d_%H_%M_%S')
-    
 
-def get_index(start_year, parent_dir):
+
+def get_index(start_year, parent_dir, file_prefix='AFWA'):
     r"""Associates a Cheyenne filename with a 15 minute
     period during a given simulation year, which starts in October
     and ends in September.
@@ -36,7 +36,9 @@ def get_index(start_year, parent_dir):
     parent_dir: str
         The top directory in which to look for files.
         This is expected to have the simulation year 
-        within it (e.g., 2004-2005/).        
+        within it (e.g., 2004-2005/).
+    file_prefix: str
+        Leading filename prefix, can either be AFWA or pgrb3D. Default 'AFWA'.
         
     Returns
     -------
@@ -53,7 +55,7 @@ def get_index(start_year, parent_dir):
     
     for month in range(1, 13):
     
-        files = natsorted(glob.glob("{}/{:02d}/AFWA*".format(parent_dir, month)))
+        files = natsorted(glob.glob("{}/{:02d}/{}*".format(parent_dir, month, file_prefix)))
 
         for file in files:
             
