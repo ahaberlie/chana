@@ -1,5 +1,6 @@
 #imports
-
+import numpy as np
+import pandas as pd
 
 def get_sum(geo_df, groupby=None):
     r"""Calculates the sum of given slices.  The argument
@@ -26,13 +27,30 @@ def get_sum(geo_df, groupby=None):
         The resulting daily sum for a given geo_df
     """
 
+    df = pd.read_csv(geo_df)
+    sum_type = groupby
+    result = np.zeros(shape=(899, 1399))
+
     if sum_type == None:
-        #loop through each group and sum slices
-    
+        for gid, group in df.groupby('start_hour'):
+            tmp = np.zeros(shape=(899, 1399))
+            if len(group) >= 3:
+                for sid, sli in group.iterrows():
+                    y, x = sli.coords[:, 0], sli.coords[:, 1]
+                    tmp[y, x] += 1
+                result += 1 * (tmp > 0)
+
     else:
         #groupby
         #loop through each group and sum slices
         #multiply by 1 and add to overall sum
+        for gid, group in df.groupby(sum_type):
+            if len(group) >= 3:
+                tmp = np.zeros(shape=(899, 1399))
+                for sid, sli in group.iterrows():
+                    y, x = sli.coords[:, 0], sli.coords[:, 1]
+                    tmp[y, x] += 1
+                result += 1 * (tmp > 0)
     
     return result
         
@@ -59,13 +77,30 @@ def get_count(geo_df, groupby=None):
     result: ndarray (N, M)
         The resulting daily sum for a given geo_df
     """
-    
+
+    df = pd.read_csv(geo_df)
+    sum_type = groupby
+    result = np.zeros(shape=(899, 1399))
+
     if sum_type == None:
         #loop through each group and count slices
-    
+        for gid, group in df.groupby('start_hour'):
+            if len(group) >= 3:
+                for sid, sli in df.iterrows():
+                    y, x = sli.coords[:, 0], sli.coords[:, 1]
+                    result[y, x] += 1
+
     else:
         #groupby
         #loop through each group and add to counts
+
+        for gid, group in df.groupby(sum_type):
+            tmp = np.zeros(shape=(899, 1399))
+            if len(group) >= 3:
+                for sid, sli in group.iterrows():
+                    y, x = sli.coords[:, 0], sli.coords[:, 1]
+                    tmp[y, x] += 1
+                result[y, x] += tmp
 
     return result
     
